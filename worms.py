@@ -1,5 +1,6 @@
 import asyncio
 from playwright.async_api import async_playwright
+import ddddocr
 
 async def main():
     async with async_playwright() as p:
@@ -23,6 +24,10 @@ async def main():
         await browser.close()
 
 asyncio.run(main())
+ocr = ddddocr.DdddOcr()
+image = open("test.png", 'rb').read()
+result = ocr.classification(image)
+print(result)
 
 '''
 if __name__ == 'main':
