@@ -9,15 +9,15 @@ async def main():
         page = await context.new_page()
 
         # 导航到目标网站
-        await page.goto('https://example.com')
+        await page.goto('https://select.pdgzf.com/login')
 
         # 等待页面加载完成
         await page.wait_for_load_state('networkidle')
+        #输入账号
+        await page.locator('//*[@id="loginhEAD"]/div[1]/div[2]/form/div[1]/div/div/input').fill('shuaibangguo')
+        await page.locator('//*[@id="loginhEAD"]/div[1]/div[2]/form/div[2]/div/div/input').fill('shuai183493')
+        await page.locator('//*[@id="loginhEAD"]/div[1]/div[2]/form/div[3]/div/img').screenshot(path='test.png')
 
-        # 提取页面上的所有标题
-        titles = await page.query_selector_all('h1')
-        for title in titles:
-            print(await page.evaluate('(element) => element.textContent', title))
 
         # 关闭浏览器
         await browser.close()
